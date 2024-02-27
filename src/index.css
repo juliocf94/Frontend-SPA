@@ -5,8 +5,8 @@
 
   /* Ajuste de colores para mejorar la legibilidad */
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87); /* Cambio de color de texto para mejor contraste */
+  background-color: #f7f7f7; /* Color de fondo suavizado */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,54 +16,50 @@
 
 a {
   font-weight: 500;
-  color: #80d3f7;
-  /* Nuevo color para mejorar la legibilidad */
+  color: #0077cc; /* Nuevo color de enlace para mejorar la legibilidad */
   text-decoration: none;
 }
 
 a:hover {
-  color: #4abef3;
-  /* Nuevo color de hover */
+  color: #004466; /* Nuevo color de hover */
 }
 
 body {
-  margin: 0;
+  margin: 20px;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
+.table-container {
+  margin-top: 20px; /* Ajusta el valor según tu preferencia */
+}
+
 h1 {
   font-size: 2.5em;
-  /* Reducir el tamaño de la fuente para h1 */
   line-height: 1.1;
 }
 
 button {
   border-radius: 4px;
-  /* Reducir la borda del botón */
   border: none;
-  /* Eliminar el borde */
   padding: 0.5em 1em;
-  /* Ajustar el espaciado interno */
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ddd; /* Color de fondo del botón suavizado */
   cursor: pointer;
   transition: background-color 0.25s;
 }
 
 button:hover {
-  background-color: #333;
-  /* Nuevo color de hover */
+  background-color: #ccc; /* Nuevo color de hover */
 }
 
 button:focus,
 button:focus-visible {
   outline: none;
-  /* Eliminar el contorno */
 }
 
 @media (prefers-color-scheme: light) {
@@ -74,11 +70,9 @@ button:focus-visible {
 
   a:hover {
     color: #0077cc;
-    /* Nuevo color de hover */
   }
 
   button {
     background-color: #f0f0f0;
-    /* Nuevo color de botón */
   }
 }

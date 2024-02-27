@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add"; // Icono de añadir
 import { TreeView } from "@mui/x-tree-view/TreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import ConfirmationDialog from "./atoms/ConfirmationDialog";
-
+import "./../styles/tree_view.css";
 export default function Menu() {
   const [menuData, setMenuData] = useState([]);
   const [editingNodeId, setEditingNodeId] = useState(null);
@@ -45,7 +45,7 @@ export default function Menu() {
       };
 
       await MenuAPI.addMenuItem(`menu-items/${newItemId}/add-item`, data);
-      fetchData(); 
+      fetchData();
     } catch (error) {
       console.error("Error al actualizar elemento:", error);
     }
@@ -151,13 +151,15 @@ export default function Menu() {
       setOpenDeleteConfirmation(false);
     }
   };
+
   const renderTreeItems = (nodes, isRoot = true) =>
     nodes.map((node) => (
       <TreeItem
+        classes={{ root: "tree-item" }}
         key={node.id}
         nodeId={node.id.toString()}
         label={
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="treeitem-content">
             {editingNodeId === node.id ? (
               <input
                 ref={inputRef}
@@ -176,6 +178,7 @@ export default function Menu() {
               />
             ) : (
               <div
+                className="treeitem-label"
                 onDoubleClick={() =>
                   handleEditMenuItem(node.id, node.item_name)
                 }
@@ -185,6 +188,7 @@ export default function Menu() {
             )}
             {node.children.length > 0 && ( // Renderizar el icono solo si el nodo tiene hijos
               <AddIcon
+                className="treeitem-icon"
                 onClick={(e) => {
                   e.stopPropagation(); // Detener la propagación del evento
                   handleAddConfirmation(node.id);
@@ -193,6 +197,7 @@ export default function Menu() {
               />
             )}
             <DeleteIcon
+              className="treeitem-icon"
               onClick={(e) => {
                 e.stopPropagation(); // Detener la propagación del evento
                 handleDeleteMenuItem(node.id, node.item_name);
@@ -211,6 +216,7 @@ export default function Menu() {
   return (
     <>
       <TreeView
+        classes={{ root: "treeview" }}
         aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}

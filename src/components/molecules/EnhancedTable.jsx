@@ -17,6 +17,7 @@ import {
   Tooltip,
   FormControlLabel,
   Switch,
+  TextField, // Importa TextField de MUI para el campo de búsqueda
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -37,6 +38,7 @@ function EnhancedTable({
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
+  const [searchTerm, setSearchTerm] = useState(""); // Nuevo estado para el término de búsqueda
 
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -106,6 +108,18 @@ function EnhancedTable({
       : [...data].sort((a, b) => comparator(b, a));
   }, [data, order, orderBy]);
 
+  // Función para filtrar los datos basados en el término de búsqueda
+  const filteredData = useMemo(() => {
+    return sortedData.filter((row) =>
+      Object.values(row).some(
+        (value) =>
+          value &&
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [sortedData, searchTerm]);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
@@ -121,7 +135,12 @@ function EnhancedTable({
             id="tableTitle"
             component="div"
           >
-            
+            <TextField
+              label="Search"
+              variant="outlined"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </Typography>
           {selected.length > 0 ? (
             <Tooltip title="Delete">
@@ -184,7 +203,7 @@ function EnhancedTable({
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedData
+              {filteredData
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
@@ -240,7 +259,7 @@ function EnhancedTable({
         <TablePagination
           rowsPerPageOptions={rowsPerPageOptions}
           component="div"
-          count={data.length}
+          count={filteredData.length} // Usar la longitud de los datos filtrados
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

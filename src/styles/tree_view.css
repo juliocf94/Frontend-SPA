@@ -1,0 +1,49 @@
+/* Estilos del árbol de elementos */
+.treeview {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .treeitem {
+    margin-bottom: 5px;
+  }
+  
+  .treeitem-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .treeitem-label {
+    margin-right: 5px;
+  }
+  
+  .treeitem-icon {
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  /* Estilos de los cuadros de diálogo */
+  .confirmation-dialog {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmation-dialog-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .confirmation-dialog-content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .confirmation-dialog-buttons {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
