@@ -3,6 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
+  /* Ajuste de colores para mejorar la legibilidad */
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -15,11 +16,14 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #80d3f7;
+  /* Nuevo color para mejorar la legibilidad */
+  text-decoration: none;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #4abef3;
+  /* Nuevo color de hover */
 }
 
 body {
@@ -31,27 +35,35 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
+  /* Reducir el tamaño de la fuente para h1 */
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 4px;
+  /* Reducir la borda del botón */
+  border: none;
+  /* Eliminar el borde */
+  padding: 0.5em 1em;
+  /* Ajustar el espaciado interno */
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  background-color: #333;
+  /* Nuevo color de hover */
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  /* Eliminar el contorno */
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,10 +71,14 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
-    color: #747bff;
+    color: #0077cc;
+    /* Nuevo color de hover */
   }
+
   button {
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
+    /* Nuevo color de botón */
   }
 }
